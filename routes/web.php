@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,8 +30,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::match(['get', 'post'], 'admin/login', 'App\Http\Controllers\Admin\AdminController@login')->name('admin.login');
 
-// Login Without admin group
-Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
 
-Route::get("admin/dashboard", 'App\Http\Controllers\Admin\AdminController@dashboard');
+
+

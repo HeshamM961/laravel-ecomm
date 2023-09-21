@@ -14,10 +14,10 @@ class Admin
      *
      * @param Closure(Request): (Response) $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         if (!Auth::guard('admin')->check()) {
-            return redirect()->route('admin.login');
+            return redirect('admin/login')->with('error_message', 'Back from middleware');
         }
         return $next($request);
     }

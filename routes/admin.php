@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Login
-Route::get('login', 'AdminController@login')->name('admin.login');
-
 Route::group(['middleware' => ['admin']], function () {
-    // Dashboard Index
-    Route::get("dashboard", 'AdminController@dashboard');
+    Route::get('dashboard', 'AdminController@dashboard')->name('adminn.dashboard');
 
+    //Logout
+    Route::get('logout', 'AdminController@logout')->name('admin.logout');
 });
-
